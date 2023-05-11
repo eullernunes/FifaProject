@@ -1,7 +1,10 @@
+import java.io.RandomAccessFile;
 import java.util.Scanner;
 
 public class Menu {
     public static Scanner sc = new Scanner(System.in);
+    static final String DEFAULT_FILE = "Jogadores.db";
+    static final String DEFAULT_FILE_CSV = "Fifa 23 Players Data.csv";
 
     public void menu() throws Exception{
         int opcao = -1;
@@ -9,18 +12,18 @@ public class Menu {
         System.out.println("-------------------------------------------------------------");
         System.out.println("|                       FIFA DATASET                        |");
         System.out.println("-------------------------------------------------------------");
-       
+           
         System.out.println("\n---------- Menu ----------");
         System.out.println("Digite a opção desejada:");
         System.out.println("1)Carregar arquivo csv!");
         System.out.println("2)Acessar Menu Jogadores");
         System.out.println("0)Sair\n");
         opcao = sc.nextInt();            
-
+    
         switch (opcao) {
             case 1:
                 LeCsv lerCsv = new LeCsv();
-                lerCsv.lendoArquivo();
+                lerCsv.lendoArquivo(DEFAULT_FILE_CSV);
                 break;        
             case 2:
                 exibeMenuJogadores();
@@ -32,7 +35,8 @@ public class Menu {
                 System.out.println("Selecione uma opção válida!!");
                 menu();
             break;
-        }
+            }
+        
     }
 
     public void exibeMenuJogadores() throws Exception{
@@ -44,15 +48,23 @@ public class Menu {
         
 
         while(opcao != 0){
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("|                       FIFA DATASET                        |");
+            System.out.println("-------------------------------------------------------------");
             System.out.println("Digite a opção desejada:");
             System.out.println("1- Criar jogador");
-            System.out.println("2- Pesquisar jogador");
-            System.out.println("3- Alterar jogador");
-            System.out.println("4- Deletar Jogador");
+            System.out.println("2- Pesquisar Registro");
+            System.out.println("3- Alterar Registro");
+            System.out.println("4- Deletar Registro");
+            System.out.println("5- Ordenar Registros ");
+            System.out.println("6- Compactar Arquivo");
             System.out.println("0) Sair");
 
             opcao = sc.nextInt();
-            switch(opcao) {        
+            switch(opcao) {      
+                case 0 :
+                    System.out.println("Saindo...");
+                    break;
                 case 1:
                     id = crud.idCabecalho();
                     jogador = crud.create(id);
@@ -106,9 +118,14 @@ public class Menu {
                     break;
 
                 case 5:
-                    //Ordenacao.intercalacaoBalanceada2(0);
+                    System.out.println("Ordenação ainda não implementada");
                     break;
 
+                case 6:
+                    System.out.println("Compactação de Arquivos!");
+                    HuffmanCode.start();
+                    
+                    break;
                 default:
                     System.out.println("Digite uma opção válida!!");
             }

@@ -5,9 +5,8 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class LeCsv {
-    String path = "Fifa 23 Players Data.csv";;
 
-    public void lendoArquivo() throws Exception{
+    public void lendoArquivo(String path) throws Exception{
         FileReader fileReader = new FileReader(path);
         BufferedReader br = new BufferedReader(fileReader);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

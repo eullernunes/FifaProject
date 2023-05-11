@@ -120,7 +120,8 @@ class Jogador{
         setClubName(dis.readUTF());
 
         long data = dis.readLong();
-        Date data1 = new Date(data);        
+        Date data1 = new Date(data); 
+               
         setJoinedOn(data1);
     }
 

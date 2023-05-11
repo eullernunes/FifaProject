@@ -100,6 +100,8 @@ public class Crud {
         return jogador;
     }
 
+
+
     public int idCabecalho(){
         int idCabecalho;
 
