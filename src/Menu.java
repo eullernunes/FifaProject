@@ -1,4 +1,3 @@
-import java.io.RandomAccessFile;
 import java.util.Scanner;
 
 public class Menu {
@@ -57,7 +56,7 @@ public class Menu {
             System.out.println("3- Alterar Registro");
             System.out.println("4- Deletar Registro");
             System.out.println("5- Ordenar Registros ");
-            System.out.println("6- Compactar Arquivo");
+            System.out.println("6- Huffman");
             System.out.println("0) Sair");
 
             opcao = sc.nextInt();
@@ -122,9 +121,23 @@ public class Menu {
                     break;
 
                 case 6:
-                    System.out.println("Compactação de Arquivos!");
-                    HuffmanCode.start();
-                    
+                    System.out.println("****** HUFFMAN ******");
+                    System.out.println("1 - Compactar");
+                    System.out.println("2 - Descompactar");
+                    System.out.println("3 - Sair");
+
+                    int op = sc.nextInt();
+
+                    if(op == 1){
+                        if(HuffmanTree.compactar()){
+                            System.out.println("Arquivo compactado com sucesso!!");
+                        }
+                    }else if(op == 2){
+                        if(HuffmanTree.descompactar()){
+                            System.out.println("Arquivo descompactado com sucesso!!");
+                        }
+                    }
+                   
                     break;
                 default:
                     System.out.println("Digite uma opção válida!!");
