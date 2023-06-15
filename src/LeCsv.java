@@ -13,7 +13,7 @@ public class LeCsv {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         String linha = "";
         Jogador novoJogador;
-        Crud crud = new Crud("Jogadores");
+        Crud crud = new Crud("dados/db/Jogadores.db");
 
         br.readLine(); //ignora o cabeçalho do csv
         linha = br.readLine();
@@ -21,7 +21,6 @@ public class LeCsv {
         while(linha != null){
             novoJogador = new Jogador();
             String[] array = linha.split(",");
-
             String knowAs = array[0];
             novoJogador.setKnownAs(knowAs);
             String fullName = array[1];

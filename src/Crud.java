@@ -13,14 +13,14 @@ public class Crud {
     
 
 
-    public Crud (String arquivo) throws Exception{
+    public Crud (String path) throws Exception{
         File f = new File("dados");
 
         if(!f.exists()){
             f.mkdir();
         }
 
-        fileReader = new RandomAccessFile("dados/" + arquivo +".db", "rw");
+        fileReader = new RandomAccessFile(path, "rw");
 
         if(fileReader.length() == 0){
             fileReader.writeInt(0);
@@ -52,6 +52,7 @@ public class Crud {
     }
 
     public Jogador create(int id)throws Exception{
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         Scanner sc = new Scanner(System.in);

@@ -13,7 +13,6 @@ class Jogador{
 
     static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-
     private int id;
     private String knownAs;
     private String fullName;
@@ -89,7 +88,11 @@ class Jogador{
 
         dos.writeInt(this.id);      
         dos.writeUTF(this.knownAs);
-        dos.writeUTF(this.fullName);
+
+        String fullName = this.fullName;
+        fullName  = Criptografia.criptografarCesar(fullName, 3);
+
+        dos.writeUTF(fullName);
         dos.writeByte(this.overall);
         dos.writeInt(this.value);
         dos.writeUTF(this.bestPosition);
@@ -111,7 +114,9 @@ class Jogador{
 
         setId(dis.readInt());
         setKnownAs(dis.readUTF());
-        setFullName(dis.readUTF());
+        String fullName = dis.readUTF();
+        fullName = Criptografia.descriptografarCesar(fullName, 3);
+        setFullName(fullName);
         setOverall(dis.readByte());
         setValue(dis.readInt());
         setBestPosition(dis.readUTF());
